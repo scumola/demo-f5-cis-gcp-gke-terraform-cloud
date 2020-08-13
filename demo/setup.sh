@@ -67,8 +67,8 @@ cisPod=$(kubectl -n kube-system get pods --field-selector=status.phase=Running -
 #f5-as3-configmap-juiceshop-src.yaml > f5-as3-configmap-juiceshop.yaml
 cp config-maps/f5-as3-configmap-juiceshop-src.yaml config-maps/f5-as3-configmap-juiceshop.yaml
 echo "set virtual address"
-sed -i "s/-external-virtual-address-/1.0.0.4/g" config-maps/f5-as3-configmap-juiceshop.yaml
-sed -i "s/-juiceshop-service-port-/$juiceshopServicePort/g" config-maps/f5-as3-configmap-juiceshop.yaml
+#sed -i "s/-external-virtual-address-/1.0.0.4/g" config-maps/f5-as3-configmap-juiceshop.yaml
+#sed -i "s/-juiceshop-service-port-/$juiceshopServicePort/g" config-maps/f5-as3-configmap-juiceshop.yaml
 # apply config map
 echo "apply config map"
 kubectl -n cis-test apply -f config-maps/f5-as3-configmap-juiceshop.yaml
@@ -91,7 +91,7 @@ kubectl -n cis-test apply -f config-maps/f5-as3-configmap-juiceshop.yaml
 echo "====done===="
 # echo "check app at http://$bigip1ExternalNatIp"
 # watch logs
-sleep 30
+#sleep 30
 echo "type yes to tail the cis logs"
 read answer
 if [ $answer == "yes" ]; then

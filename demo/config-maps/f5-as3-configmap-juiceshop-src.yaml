@@ -2,7 +2,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: f5-as3-declaration-juiceshop
-  namespace: default
   labels:
     f5type: virtual-server
     as3: "true"
@@ -24,7 +23,7 @@ data:
                     "serviceMain": {
                         "class": "Service_HTTPS",
                         "virtualAddresses": [
-                            "-external-virtual-address-"
+                            "1.0.0.4"
                         ],
                         "pool": "juiceshop_pool",
                         "securityLogProfiles": [
@@ -44,7 +43,7 @@ data:
                         ],
                         "members": [
                             {
-                                "servicePort": -juiceshop-service-port-,
+                                "servicePort": 3000,
                                 "serverAddresses": []
                             }
                         ]
